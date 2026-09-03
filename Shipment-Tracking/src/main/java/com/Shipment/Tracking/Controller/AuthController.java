@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Shipment.Tracking.DTO.LoginRequest;
 import com.Shipment.Tracking.Entity.User;
+import com.Shipment.Tracking.Security.JwtService;
 import com.Shipment.Tracking.Service.UserService;
 
 @RestController
@@ -16,6 +17,9 @@ public class AuthController {
 	
 	@Autowired
 	private UserService service;
+	
+	@Autowired
+	private JwtService jwtService;
 	
 	@PostMapping("/register")
 	public User register(@RequestBody User user) {
@@ -26,7 +30,7 @@ public class AuthController {
 	public String login(@RequestBody LoginRequest request) {
 		
 		User loggedUser=service.login(request.getEmail(),request.getPassword());
-		return "Login Successful :"+loggedUser.getRole();
+		 return jwtService.generateToken(loggedUser);
 	}
 
 }

@@ -3,6 +3,8 @@ package com.Shipment.Tracking.Entity;
 import com.Shipment.Tracking.Enum.ShipmentStatus;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -22,6 +24,7 @@ public class Shipment {
 	
 	private Double weight;
 	
+	@Enumerated(EnumType.STRING)
 	private ShipmentStatus status;
 	
 	@ManyToOne

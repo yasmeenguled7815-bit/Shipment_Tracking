@@ -2,9 +2,10 @@ package com.Shipment.Tracking.Enum;
 
 public enum ShipmentStatus {
 	
-	OPEN,
-	ASSIGNED,
+	PENDING,
+    AWAITING_PICKUP,
 	IN_TRANSIT,
-	DELIVERED
+	DELIVERED,
+	CANCELLED
 
 }
